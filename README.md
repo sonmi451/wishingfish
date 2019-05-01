@@ -1,6 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Start container
 
-## Available Scripts
+Build docker image with `docker-compose build`
+Start container with `docker-compose up`
+
+## Connect to container
+
+The container will be named `wishingfish-cards`
+Run `docker container ls` to find the container id
+
+Connect to the container with `docker exec -it wishingfish-cards bash`
+
+## Build app
+
+Inside the container that is running the site, if the `/usr/src/wishingfish/build` directory is empty then run `npm run build`
+
+From the host machine run `docker cp wishingfish-cards:/usr/src/wishingfish/build ./build`
+
+---
+
+# Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 

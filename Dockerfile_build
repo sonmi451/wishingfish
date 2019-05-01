@@ -1,0 +1,20 @@
+## use node base image
+FROM node
+
+## make app directory inside container
+RUN mkdir /usr/src/wishingfish
+RUN mkdir /usr/src/wishingfish/build
+WORKDIR /usr/src/wishingfish
+
+## add `/usr/src/wishingfish/node_modules/.bin` to $PATH
+ENV PATH /usr/src/wishingfish/node_modules/.bin:$PATH
+
+## install and cache app dependencies
+COPY package.json /usr/src/wishingfish/package.json
+RUN npm install
+
+# build app
+CMD ["npm", "build"]
+
+## copy contents of build folder inside container to host
+COPY wishingfish-cards:/usr/src/wishingfish/build ./build

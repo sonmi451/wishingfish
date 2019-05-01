@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  wishingfish:
+    container_name: wishingfish-cards
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/wishingfish'
+      - '/usr/src/wishingfish/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
